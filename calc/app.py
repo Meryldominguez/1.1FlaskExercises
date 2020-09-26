@@ -31,3 +31,18 @@ def div_request():
     b = int(request.args.get("b"))
     result = div(a,b)
     return str(result)
+
+
+opers = {
+        "add": add,
+        "sub": sub,
+        "mult": mult,
+        "div": div,
+        }
+
+@app.route("/math/<operation>")
+def math_request(operation):
+    a = int(request.args.get("a"))
+    b = int(request.args.get("b"))
+    result = opers[operation](a,b)
+    return str(result)
